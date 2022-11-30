@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('editora', function (Blueprint $table) {
             $table->id('id_editora');
             $table->string('nome_editora');
-            $table->id('id_endereco');
+            $table->integer('id_endereco');
         });
     }
 

@@ -10,14 +10,15 @@ class Endereco extends Model
     use HasFactory;
     protected $table = 'endereco';
 
-    protected $primary_key = 'id_endereco';
-
+    protected $primaryKey = 'id_endereco';
+    public $incrementing = TRUE;    
+    
     public $timestamps = false;
 
-    protected $fillablle = [
-        // id_cliente,
-        rua_endereco,
-        cidade_endereco
-
+    protected $fillable = [
+        "rua_endereco",
+       "cidade_endereco"
     ];
+
+
 }

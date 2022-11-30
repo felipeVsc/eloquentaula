@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('endereco', function (Blueprint $table) {
-            $table->id('id_editora');
-            $table->string('nome_editora');
             $table->id('id_endereco');
+            $table->string('rua_endereco');
+            $table->string('cidade_endereco');
         });
     }
 
