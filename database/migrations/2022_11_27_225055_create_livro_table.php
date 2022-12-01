@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_livro');
             $table->string('titulo_livro');
             $table->integer('id_editora');
+            $table->foreign('id_editora')->references("id_editora")->on("editora");
         });
     }
 

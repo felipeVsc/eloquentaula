@@ -10,13 +10,11 @@ class Pedido extends Model
     use HasFactory;
     protected $table = 'pedido';
 
-    protected $primary_key = 'id_pedido';
+    protected $primaryKey = 'id_pedido';
 
     public $timestamps = false;
 
-    protected $fillablle = [
-        // id_cliente,
-        id_livro
-
+    protected $fillable = [
+        "id_livro"
     ];
 }

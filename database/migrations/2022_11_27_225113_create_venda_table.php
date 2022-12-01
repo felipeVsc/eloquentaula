@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
             $table->integer('id_pedido');
+            $table->foreign('id_pedido')->references("id_pedido")->on("pedido");
             $table->integer('id_cliente');
+            $table->foreign('id_cliente')->references("id_cliente")->on("cliente");
             $table->string('valor_venda');
         });
     }

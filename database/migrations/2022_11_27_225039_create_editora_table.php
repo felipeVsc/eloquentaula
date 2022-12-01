@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_editora');
             $table->string('nome_editora');
             $table->integer('id_endereco');
+            $table->foreign('id_endereco')->references("id_endereco")->on("endereco"); 
         });
     }
 

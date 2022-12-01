@@ -14,17 +14,39 @@ class EnderecoController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function criar(Request $request)
+
+    public function getCSRFToken(){
+        return csrf_token();
+    }
+    public function criarUm(Request $request)
     {
         $data = $request->all();
 		
 		
-        dd(Endereco::create([
-            "cidade_endereco" => "teste",
-            "rua_endereco" => "teste 2"
+       Endereco::create([
+            "cidade_endereco" => $data['cidade_endereco'],
+            "rua_endereco" => $data['rua_endereco']
         ]
-		));
+		);
 		return json_encode("ok");
+    }
+
+    public function criarDois(Request $request)
+    {
+        $data = $request->all();
+		
+
+        $end = new Endereco;
+        $end->cidade_endereco = $data['cidade_endereco'];
+        $end->rua_endereco = $data['rua_endereco'];
+
+        $end->save();
+
+		return json_encode("ok");
+    }
+
+    public function getClienteEndereco($id){
+        return dd(Endereco::find($id)->cliente()->get());
     }
 
     public function getAll()
@@ -47,22 +69,21 @@ class EnderecoController extends BaseController
 
     // apenas um
     public function updateSingle(Request $request)
+
     {
         $id = $request->id_endereco;
-        $end = Endereco::find($id);
-
+        $end = Endereco::find(1);
         $end->cidade_endereco = "Arapiraca";
-
         $end->save();
 
-		return dd(Endereco::find($id)); // TODO get() aq?
+		return dd(Endereco::find(1));
     }
 
     // mass update
     public function updateMass()
     {
-        Endereco::where("cidade_endereco","Maceio")->update(['cidade_endereco',"Massayo"]);
-		return dd(Endereco::all());;
+        Endereco::where("cidade_endereco","Maceio")->update(['cidade_endereco' => "Massayo"]);
+		return dd(Endereco::all());
     }
 
     // mass update aninhado

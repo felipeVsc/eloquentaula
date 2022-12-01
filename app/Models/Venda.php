@@ -10,15 +10,13 @@ class Venda extends Model
     use HasFactory;
     protected $table = 'venda';
 
-    protected $primary_key = 'id_venda';
+    protected $primaryKey = 'id_venda';
 
     public $timestamps = false;
 
-    protected $fillablle = [
-        // id_cliente,
-        id_pedido,
-        id_cliente,
-        valor_venda
-
+    protected $fillable = [
+        "id_pedido",
+        "id_cliente",
+        "valor_venda"
     ];
 }

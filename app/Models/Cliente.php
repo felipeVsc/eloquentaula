@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Endereco;
 
 class Cliente extends Model
 {
@@ -11,14 +12,17 @@ class Cliente extends Model
 
     protected $table = 'cliente';
 
-    protected $primary_key = 'id_cliente';
+    protected $primaryKey = 'id_cliente';
 
     public $timestamps = false;
 
-    protected $fillablle = [
-        // id_cliente,
-        nome_cliente,
-        id_endereco
-
+    protected $fillable = [
+        "nome_cliente",
+        "id_endereco"
     ];
+
+    public function endereco(){
+        return $this->hasOne(Endereco::class, 'id_endereco', 'id_endereco');
+        
+    }
 }

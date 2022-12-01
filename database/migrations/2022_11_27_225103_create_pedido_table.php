@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pedido', function (Blueprint $table) {
             $table->id('id_pedido');
             $table->integer('id_livro');
+            $table->foreign('id_livro')->references("id_livro")->on("livro");
         });
     }
 

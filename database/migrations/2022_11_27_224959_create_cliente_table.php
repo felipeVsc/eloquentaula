@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
+        // $table->foreign('user_id')->references('id')->on('users');
         Schema::create('cliente', function (Blueprint $table) {
             $table->id('id_cliente');
             $table->string('nome_cliente');
-            $table->integer('id_endereco'); // testar isso aqui!
+            $table->integer('id_endereco');
+            $table->foreign('id_endereco')->references('id_endereco')->on('endereco'); 
         });
     }
 

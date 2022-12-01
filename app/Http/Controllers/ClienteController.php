@@ -32,6 +32,8 @@ class ClienteController extends BaseController
 		return dd(Cliente::all());
     }
 
+    
+
     public function getOne(Request $request)
     {
         $id = $request->id_cliente;
