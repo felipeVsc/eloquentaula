@@ -14,16 +14,31 @@ use App\Http\Controllers\EditoraController;
 |
 */
 
+// Token CSRF pra o Postman
+
 Route::get('/token', [EnderecoController::class, 'getCSRFToken']);
 
-// Route::get('/teste', [EnderecoController::class, 'selecionar']);
-Route::post('/teste', [EnderecoController::class, 'criarUm']);
+
+// Endereco Controller
+
+// Create
+Route::post('/endereco/create', [EnderecoController::class, 'criarUm']);
+Route::post('/endereco/create2', [EnderecoController::class, 'criarDois']);
+
+// Read
+
 Route::get('/endereco/all', [EnderecoController::class, 'getAll']);
 Route::get('/endereco/one/{id_endereco}', [EnderecoController::class, 'getOne']);
 Route::get('/endereco/where/{cidade_endereco}', [EnderecoController::class, 'getOneWhere']);
-Route::post('/endereco/updatesingle', [EnderecoController::class, 'updateSingle']);
-Route::post('/endereco/updatemass', [EnderecoController::class, 'updateMass']);
 Route::get('/endereco/cliente/{id_endereco}', [EnderecoController::class, 'getClienteEndereco']);
 
-Route::get('/editora', [EditoraController::class, 'testar']);
-Route::get('/editora/livro', [EditoraController::class, 'createEditoraUsingLivro']);
+// Update
+
+Route::post('/endereco/updatesingle', [EnderecoController::class, 'updateSingle']);
+Route::post('/endereco/updatemass', [EnderecoController::class, 'updateMass']);
+
+// Editora Controller
+
+Route::get('/editora/{id_livro}', [EditoraController::class, 'getEditoraFromLivro']);
+Route::get('/editora2/{id_editora}', [EditoraController::class, 'getLivroFromEditora']);
+Route::get('/editora/livro/{titulo_livro}&{id_editora}', [EditoraController::class, 'createEditoraUsingLivro']);

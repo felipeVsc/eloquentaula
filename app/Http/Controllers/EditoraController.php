@@ -15,18 +15,18 @@ class EditoraController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function getEditoraFromLivro($id){
-        return dd(Livro::find($id)->editora()->get());
+    public function getEditoraFromLivro($id_livro){
+        return dd(Livro::find($id_livro)->editora()->get());
     }
 
-    public function getLivroFromEditora($id){
-        return dd(Editora::find($id)->livro()->get());
+    public function getLivroFromEditora($id_editora){
+        return dd(Editora::find($id_editora)->livro()->get());
     }
 
-    public function createEditoraUsingLivro(){
-        $edt = Editora::find(2);
+    public function createEditoraUsingLivro($titulo_livro,$id_editora){
+        $edt = Editora::find($id_editora);
 
-        $livro2 = new Livro(["titulo_livro" => "Teste de Adicao 2"]);
+        $livro2 = new Livro(["titulo_livro" => $titulo_livro]);
 
         $edt->livro()->save($livro2);
         return dd(Editora::find(2)->livro()->get());

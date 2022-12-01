@@ -72,7 +72,7 @@ class EnderecoController extends BaseController
 
     {
         $id = $request->id_endereco;
-        $end = Endereco::find(1);
+        $end = Endereco::find($id);
         $end->cidade_endereco = "Arapiraca";
         $end->save();
 
